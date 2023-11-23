@@ -33,7 +33,7 @@
       }
     },
     "loss": {
-      "type": "FSLoss",
+      "type": "FastSpeechLoss",
       "args": {}
     },
     "lr_scheduler": {
