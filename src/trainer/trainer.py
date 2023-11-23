@@ -39,6 +39,7 @@ class Trainer(BaseTrainer):
         self.skip_oom = skip_oom
         self.config = config
         self.train_dataloader = dataloaders["train"]
+
         if len_epoch is None:
             # epoch-based training
             self.len_epoch = len(self.train_dataloader)
@@ -88,6 +89,12 @@ class Trainer(BaseTrainer):
             stop = False
             for batch_idx, batch in enumerate(list_batch):
                 progress_bar.update(1)
+                
+                print('qq')
+                for data in self.train_dataloader:
+                    print(data)
+                    break
+
                 try:
                     batch = self.process_batch(
                         batch,
@@ -106,6 +113,8 @@ class Trainer(BaseTrainer):
                         continue
                     else:
                         raise e
+                    
+                print('qq2')
 
                 full_batch_idx = batch_idx + list_batch_idx * self.batch_expand_size
                 if full_batch_idx % self.log_step == 0:
