@@ -12,13 +12,14 @@ class WanDBWriter:
 
         try:
             import wandb
-            wandb.login()
+            wandb.login(relogin=True, key=config['wandb_key'])
 
             if config['trainer'].get('wandb_project') is None:
                 raise ValueError("please specify project name for wandb")
 
             wandb.init(
                 project=config['trainer'].get('wandb_project'),
+                entity=config['trainer'].get('wandb_entity'),
                 config=config.config
             )
             self.wandb = wandb
