@@ -53,5 +53,9 @@ def get_dataloaders(configs: ConfigParser):
             shuffle=shuffle, num_workers=num_workers,
             batch_sampler=batch_sampler, drop_last=drop_last
         )
+        print('heyyy')
+        for data in dataloader:
+            print(data)
+            break
         dataloaders[split] = dataloader
     return dataloaders
