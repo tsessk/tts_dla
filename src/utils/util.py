@@ -97,7 +97,8 @@ def process_text(train_text_path):
 
         return txt
 
-def get_data_to_buffer(data_path, mel_ground_truth, alignment_path, text_cleaners, pitch_path, energy_path):
+def get_data_to_buffer(data_path, mel_ground_truth, alignment_path, pitch_path,
+                                         energy_path, text_cleaners, batch_expand_size):
     buffer = list()
     text = process_text(data_path)
 
@@ -133,6 +134,7 @@ def get_data_to_buffer(data_path, mel_ground_truth, alignment_path, text_cleaner
 
         buffer.append({"text": character, "duration": duration,
                        "mel_target": mel_gt_target, "pitch_target": pitch_gt_target,
-                       "energy_target": energy_gt_target})
+                       "energy_target": energy_gt_target,
+                       "batch_expand_size": batch_expand_size})
 
     return buffer
