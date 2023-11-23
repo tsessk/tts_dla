@@ -8,6 +8,7 @@ from src.utils.parse_config import ConfigParser
 
 
 def get_dataloaders(configs: ConfigParser):
+    print('ENTERED GET_DATALOADERS')
     dataloaders = {}
     for split, params in configs["data"].items():
         num_workers = params.get("num_workers", 1)
@@ -18,6 +19,7 @@ def get_dataloaders(configs: ConfigParser):
             drop_last = False
 
         # create and join datasets
+        print('CREATING DATASETS')
         datasets = []
         for ds in params["datasets"]:
             datasets.append(configs.init_obj(ds, src.datasets,
@@ -43,6 +45,7 @@ def get_dataloaders(configs: ConfigParser):
             f"Batch size ({bs}) shouldn't be larger than dataset length ({len(dataset)})"
 
         # create dataloader
+        print('CREATING DATALOADER')
         dataloader = DataLoader(
             dataset, batch_size=bs*configs["trainer"]["batch_expand_size"], collate_fn=collate_fn,
             shuffle=shuffle, num_workers=num_workers,
