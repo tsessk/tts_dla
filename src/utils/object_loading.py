@@ -55,7 +55,9 @@ def get_dataloaders(configs: ConfigParser):
         )
         print('heyyy')
         for data in dataloader:
+            print(type(data))
             print(data)
             break
+        print('byyyyyeee')
         dataloaders[split] = dataloader
     return dataloaders
