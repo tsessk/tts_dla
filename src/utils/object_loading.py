@@ -3,7 +3,6 @@ from operator import xor
 from torch.utils.data import ConcatDataset, DataLoader
 
 import src.datasets
-from src import batch_sampler as batch_sampler_module
 from src.collate_fn.collate import collate_fn
 from src.utils.parse_config import ConfigParser
 
@@ -35,11 +34,6 @@ def get_dataloaders(configs: ConfigParser):
             bs = params["batch_size"]
             shuffle = True
             batch_sampler = None
-        elif "batch_sampler" in params:
-            batch_sampler = configs.init_obj(params["batch_sampler"], batch_sampler_module,
-                                             data_source=dataset)
-            bs, shuffle = 1, False
-        else:
             raise Exception()
 
         # Fun fact. An hour of debugging was wasted to write this line
