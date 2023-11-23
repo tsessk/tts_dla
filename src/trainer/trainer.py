@@ -61,8 +61,8 @@ class Trainer(BaseTrainer):
     def move_batch_to_device(batch, device: torch.device):
         """
         Move all necessary tensors to the HPU
-        """
-        for tensor_for_gpu in ["spectrogram", "text_encoded"]:
+        """  
+        for tensor_for_gpu in ["mel_target", "mel_pos", "src_seq", "src_pos", "pitch_target", "energy_target", "duration_target"]:
             batch[tensor_for_gpu] = batch[tensor_for_gpu].to(device)
         return batch
 
