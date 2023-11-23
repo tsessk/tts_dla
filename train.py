@@ -7,6 +7,7 @@ import torch
 
 import src.loss as module_loss
 import src.model as module_arch
+import src.metric as module_metric
 from src.trainer import Trainer
 from src.utils import prepare_device
 from src.utils.object_loading import get_dataloaders
@@ -42,6 +43,10 @@ def main(config):
   
     # build optimizer, learning rate scheduler. delete every line containing lr_scheduler for
     # disabling scheduler
+    metrics = [
+        config.init_obj(metric_dict, module_metric)
+        for metric_dict in config["metrics"]
+    ]
     trainable_params = filter(lambda p: p.requires_grad, model.parameters())
     optimizer = config.init_obj(config["optimizer"], torch.optim, trainable_params)
     lr_scheduler = config.init_obj(config["lr_scheduler"], torch.optim.lr_scheduler, optimizer)
@@ -51,6 +56,7 @@ def main(config):
         loss_module,
         optimizer=optimizer,
         config=config,
+        metrics=metrics,
         device=device,
         dataloaders=dataloaders,
         lr_scheduler=lr_scheduler,
