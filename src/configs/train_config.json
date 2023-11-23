@@ -21,7 +21,7 @@
         "energy_predictor_kernel_size": 3,
         "dropout": 0.1,
         "PAD": 0,
-        "n_mels": 80,
+        "num_mels": 80,
         "num_embed": 256,
         "min_pitch": 59.913448819015024,
         "max_pitch": 887.2688230720693,
