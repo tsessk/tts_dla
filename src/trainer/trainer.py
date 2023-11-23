@@ -84,6 +84,13 @@ class Trainer(BaseTrainer):
         self.train_metrics.reset()
         self.writer.add_scalar("epoch", epoch)
         print('qq')
+
+        for data in self.train_dataloader:
+            print(data)
+            break
+        print(len(self.train_dataloader))
+
+
         progress_bar = tqdm(range(self.len_epoch), desc='train')
         print('qq')
 
