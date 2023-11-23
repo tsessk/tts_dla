@@ -49,7 +49,7 @@ def main(config):
     trainer = Trainer(
         model,
         loss_module,
-        optimizer,
+        optimizer=optimizer,
         config=config,
         device=device,
         dataloaders=dataloaders,
