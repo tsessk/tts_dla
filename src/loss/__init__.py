@@ -1,5 +1,5 @@
-from hw_asr.loss.CTCLossWrapper import CTCLossWrapper as CTCLoss
+from src.loss.fastspeech2 import FastSpeechLoss
 
 __all__ = [
-    "CTCLoss"
+    "FastSpeechLoss"
 ]
