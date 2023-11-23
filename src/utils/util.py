@@ -1,11 +1,11 @@
 import os
-import tqdm 
 import time
 import json
 
 from collections import OrderedDict
 from itertools import repeat
 from pathlib import Path
+from tqdm import tqdm
 import numpy as np
 import torch
 import pandas as pd
