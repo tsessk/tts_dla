@@ -76,6 +76,8 @@ class ConfigParser:
             # update new config for fine-tuning
             config.update(read_json(args.config))
 
+        config.update({'wandb_key': args.wandb_key})
+        
         # parse custom cli options into dictionary
         modification = {
             opt.target: getattr(args, _get_opt_name(opt.flags)) for opt in options
