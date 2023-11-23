@@ -35,6 +35,7 @@ def get_dataloaders(configs: ConfigParser):
             bs = params["batch_size"]
             shuffle = True
             batch_sampler = None
+        else:
             raise Exception()
 
         # Fun fact. An hour of debugging was wasted to write this line
