@@ -95,7 +95,6 @@ class Trainer(BaseTrainer):
                         metrics=self.train_metrics,
                         index=batch_idx,
                         total=self.len_epoch,
-                        index=batch_idx
                     )
                 except RuntimeError as e:
                     if "out of memory" in str(e) and self.skip_oom:
@@ -210,7 +209,7 @@ class Trainer(BaseTrainer):
     def _log_audio(self, name, audio, sr):
         self.writer.add_audio(f"audio{name}", audio, sample_rate=sr)
         
-        
+
     @torch.no_grad()
     def get_grad_norm(self, norm_type=2):
         parameters = self.model.parameters()
