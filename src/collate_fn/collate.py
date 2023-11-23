@@ -125,7 +125,7 @@ def collate_fn(batch):
     """
     Collate and pad fields in dataset items
     """
-    batch_expand_size = None #batch[0]["batch_expand_size"] TODO
+    batch_expand_size = batch[0]["batch_expand_size"]
 
     len_arr = np.array([d["text"].size(0) for d in batch])
     index_arr = np.argsort(-len_arr)
