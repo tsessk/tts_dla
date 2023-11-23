@@ -14,7 +14,7 @@ from src.base import BaseTrainer
 from src.logger.utils import plot_spectrogram_to_buf
 from src.utils import inf_loop, MetricTracker
 from src.text import text_to_sequence
-from src.waveglow import get_wav
+from src.waveglow.inference import get_wav
 
 
 class Trainer(BaseTrainer):
