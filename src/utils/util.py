@@ -132,9 +132,9 @@ def get_data_to_buffer(data_path, mel_ground_truth, alignment_path, pitch_path,
         pitch_gt_target = torch.from_numpy(pitch_gt_target)
         energy_gt_target = torch.from_numpy(energy_gt_target)
 
-        buffer.append({"src_seq": character, "duration_target": duration,
-                       "mel_target": mel_gt_target, "pitch_target": pitch_gt_target,
-                       "energy_target": energy_gt_target,
+        buffer.append({"text": character, "duration": duration,
+                       "mel_target": mel_gt_target, "pitch": pitch_gt_target,
+                       "energy": energy_gt_target,
                        "batch_expand_size": batch_expand_size})
 
     return buffer
