@@ -102,7 +102,7 @@ def get_data_to_buffer(data_path, mel_ground_truth, alignment_path, pitch_path,
     buffer = list()
     text = process_text(data_path)
 
-    for i in tqdm(range(10)):
+    for i in tqdm(range(64)):
 
         mel_gt_name = os.path.join(
             mel_ground_truth, "ljspeech-mel-%05d.npy" % (i+1))
