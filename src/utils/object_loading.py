@@ -30,6 +30,8 @@ def get_dataloaders(configs: ConfigParser):
         else:
             dataset = datasets[0]
 
+        print(dataset)
+        print(len(dataset))
         # select batch size or batch sampler
         assert xor("batch_size" in params, "batch_sampler" in params), \
             "You must provide batch_size or batch_sampler for each split"
