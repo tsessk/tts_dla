@@ -10,7 +10,7 @@ import numpy as np
 import torch
 import pandas as pd
 
-from text import text_to_sequence
+from src.text import text_to_sequence
 
 
 ROOT_PATH = Path(__file__).absolute().resolve().parent.parent.parent
