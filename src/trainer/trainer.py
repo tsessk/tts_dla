@@ -84,6 +84,7 @@ class Trainer(BaseTrainer):
         self.train_metrics.reset()
         self.writer.add_scalar("epoch", epoch)
         print('qq')
+        print(self.train_dataloader)
 
         for data in self.train_dataloader:
             print(data)
