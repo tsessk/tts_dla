@@ -84,7 +84,7 @@ if __name__ == "__main__":
         help="indices of GPUs to enable (default: all)",
     )
     args.add_argument(
-        "-wk",
+        "-wandbk",
         "--wandb_key",
         default=None,
         type=str,
