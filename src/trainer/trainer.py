@@ -192,34 +192,6 @@ class Trainer(BaseTrainer):
             metrics.update(met.name, met(**batch))
         return batch
 
-    def _evaluation_epoch(self):
-        """
-        Validate after training an epoch
-
-        :param epoch: Integer, current training epoch.
-        :return: A log that contains information about validation
-        """
-        self.model.eval()
-        
-        texts = [
-            'Many college students have gone to college and gotten hooked on drugs and alcohol',
-            'Fool me once, shame on Shame on you Fool me, we can not get fooled again'
-        ]
-
-        text_cleaners = ["english_cleaners"]
-        tokenized_texts = [text_to_sequence(text, text_cleaners) for text in texts]
-
-        sampling_rate = 22050
-
-        for i, tokenized_text in enumerate(tokenized_texts):
-            src_seq = torch.tensor(tokenized_text, device=self.device).unsqueeze(0)
-            src_pos = torch.tensor(
-                [i + 1 for i in range(len(tokenized_text))], device=self.device).unsqueeze(0)
-            outputs = self.model(src_seq=src_seq, src_pos=src_pos)
-            wav = get_wav(outputs["mel_output"].transpose(
-                1, 2).to("cuda"), self.waveglow, sampling_rate=sampling_rate).unsqueeze(0)
-            self._log_audio(wav, sampling_rate, f"test_{i + 1}")
-
     def _progress(self, batch_idx):
         base = "[{}/{} ({:.0f}%)]"
         if hasattr(self.train_dataloader, "n_samples"):
